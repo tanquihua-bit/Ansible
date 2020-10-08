@@ -1,3 +1,5 @@
+# Este archivo debe tener un nombre con la extension .yml : ejemplo instalacion.yml
+# modo de ejecucion:$ ansible-playbook instalacion.yml
 ---
 
 - hosts: all
