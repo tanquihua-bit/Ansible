@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  tasks:
+    - name: INSTALACION DE HTTPD...
+      dnf:
+        name: httpd
+        state: latest
+    - name: INICIANDO EL SERVICIO DE HTTPD...
+      service:
+        name: httpd
+        state: started
+
+    - name: INSTALACION DE HERRAMIENTAS...
+      dnf:
+        name:
+          - htop
+          - micro
+        state: latest
