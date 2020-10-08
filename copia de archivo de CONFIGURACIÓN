@@ -1,0 +1,33 @@
+- hosts: all
+  tasks:
+    - name: INSTALACION DE HTTPD...
+      dnf:
+        name: neofetch
+        state: latest
+
+    - name: creacion de ARCHIVO (banner)...
+      file:
+        path: /etc/ssh/banner
+        state: touch
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: copiar ARCHIVO DE "SSHD_CONFIG"...
+      copy:
+        src: sshd_config
+        dest: /etc/ssh/
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: copiar ARCHIVO BANNER...
+      copy:
+        src: banner
+        dest: /etc/ssh/
+
+    - name: REINICIAR EL SERVICIO DE SSH ...
+      service:
+        name: sshd
+        state: restarted
+
